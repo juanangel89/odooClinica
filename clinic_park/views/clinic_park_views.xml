@@ -38,7 +38,7 @@
 
 <odoo>
     <!-- Vista Tree -->
-    <record id="view_clinic_patient_tree" model="ir.ui.view">
+    <record id="view_clinic_park_patient_tree" model="ir.ui.view">
         <field name="name">clinic.park.patient.tree</field>
         <field name="model">clinic.park.patient</field>
         <field name="arch" type="xml">
@@ -52,7 +52,7 @@
     </record>
 
     <!-- Vista Kanban -->
-    <record id="view_clinic_patient_kanban" model="ir.ui.view">
+    <record id="view_clinic_park_patient_kanban" model="ir.ui.view">
         <field name="name">clinic.park.patient.kanban</field>
         <field name="model">clinic.park.patient</field>
         <field name="arch" type="xml">
@@ -74,7 +74,7 @@
     </record>
 
     <!-- Vista Formulario -->
-    <record id="view_clinic_patient_form" model="ir.ui.view">
+    <record id="view_clinic_park_patient_form" model="ir.ui.view">
         <field name="name">clinic.park.patient.form</field>
         <field name="model">clinic.park.patient</field>
         <field name="arch" type="xml">
@@ -99,7 +99,7 @@
     </record>
 
     <!-- Acción -->
-    <record id="action_clinic_patient" model="ir.actions.act_window">
+    <record id="action_clinic_park_patient" model="ir.actions.act_window">
         <field name="name">Pacientes</field>
         <field name="res_model">clinic.park.patient</field>
         <field name="view_mode">kanban,tree,form</field>

@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models,fields
 
 class EstateProperty(models.Model):
     _name = "estate.property"
@@ -12,7 +12,7 @@ class EstateProperty(models.Model):
         ('offer received', 'Offer received'),
         ('sold', 'Sold'),
         ('cancelled', 'Cancelled')
-    ],default='new',copy=False,required=True)
+    ],default='new',copy=False,required=True),
     postcode = fields.Char()
     date_availability = fields.Date(copy=False, default=lambda self: fields.Date.add(fields.Date.today(), months=3))  
     expected_price = fields.Float(  required=True)

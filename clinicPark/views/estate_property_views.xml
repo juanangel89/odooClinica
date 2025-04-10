@@ -1,95 +1,64 @@
-<?xml version="1.0"?> 
 <odoo>
-    <record id="estate_property_action" model="ir.actions.act_window" >
-        <field name="name">properties</field>
-        <field name="res_model">estate.property</field>
-        <field name="view_mode">kanban,form</field>
-        <field name="help" type="html">
-            <p class="oe_view_nocontent_create">
-                Create you first property
-            </p>
-            <p>
-                You can create a new property by clicking on the "Create" and create and create button.
-            </p>
-        </field> 
+    <!-- Acción -->
+    <record id="clinic_patient_action" model="ir.actions.act_window">
+        <field name="name">Patient Admissions</field>
+        <field name="res_model">clinic.patient</field>
+        <field name="view_mode">tree,form</field>
     </record>
-    
 
-    <!-- <record id="estate_property_view_tree" model="ir.ui.view">
-        <field name="name">estate.property.tree</field>
-        <field name="model">estate.property</field>
+    <!-- Vista Tree -->
+    <record id="clinic_patient_tree_view" model="ir.ui.view">
+        <field name="name">clinic.patient.tree</field>
+        <field name="model">clinic.patient</field>
         <field name="arch" type="xml">
+<<<<<<< HEAD
+            <tree string="Patients">
+                <field name="name"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <field name="admission_date"/>
+=======
             <tree string="Properties">
-                <field name="name"  string="titulo no cambia"/>
-                <field name="state"/>
-                <field name="postcode" string='codigo postal'/>
-                <field name="bedrooms"/>
+                <field name="name" string="nombre propiedad"/>
+                <field name="postcode"  string="codigo postal"/>
+                <field name="bedrooms" string="habitaciones"/>
                 <field name="living_area"/>
                 <field name="expected_price"/>
                 <field name="selling_price"/>
                 <field name="date_availability" string="Available From"/>
+>>>>>>> 2d3a4695ffa622bf97b70b95354ea5391c31db17
             </tree>
         </field>
-    </record> -->
+    </record>
 
-        <record id="estate_property_view_kanban" model="ir.ui.view">
-    <field name="name">estate.property.kanban</field>
-    <field name="model">estate.property</field>
-    <field name="arch" type="xml">
-        <kanban default_group_by="state">
-            <field name="name"/>
-            <field name="expected_price"/>
-            <templates>
-                <t t-name="kanban-box">
-                    <div class="oe_kanban_card">
-                        <strong><field name="name"/></strong>
-                        <div>Price: <field name="expected_price"/></div>
-                        <div>Status: <field name="state"/></div>
-                    </div>
-                </t>
-            </templates>
-        </kanban>
-    </field>
-</record>
-
-
-
-
-    <record id="estate_property_view_form" model="ir.ui.view">
-        <field name="name">estate.property.form</field>
-        <field name="model">estate.property</field>
+    <!-- Vista Form centrada -->
+    <record id="clinic_patient_form_view" model="ir.ui.view">
+        <field name="name">clinic.patient.form</field>
+        <field name="model">clinic.patient</field>
         <field name="arch" type="xml">
-            <form string="Properties">
+            <form string="Patient Admission">
                 <sheet>
                     <group>
-                        <group>
-                            <field name="name" string="este es el segundo Title"/>
-                            <field name="description" string="Description"/>
-                            <field name="postcode"/>
-                            <field name="date_availability" string="Available From"/>
-                            <field name="state"/>
+                        <group string="Patient Information" col="2">
+                            <field name="name"/>
+                            <field name="age"/>
+                            <field name="gender"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="address"/>
                         </group>
-                        <group>
-                            <field name="bedrooms"/>
-                            <field name="living_area"/>
-                            <field name="expected_price"/>
-                            <field name="selling_price"/>
+                        <group string="Companion Information" col="2">
+                            <field name="companion_name"/>
+                            <field name="companion_phone"/>
+                            <field name="companion_relationship"/>
+                        </group>
+                        <group string="Admission Details" col="2">
+                            <field name="admission_reason"/>
+                            <field name="admission_date"/>
                         </group>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
-
-    <record id="estate_property_view_search" model="ir.ui.view">
-        <field name="name">estate.property.search</field>
-        <field name="model">estate.property</field>
-        <field name="arch" type="xml">
-            <search string="Search Properties">
-                <field name="name" string="este es el ultimo Title"/>
-                <field name="postcode"/>
-            </search>
-        </field>
-    </record>
-
 </odoo>

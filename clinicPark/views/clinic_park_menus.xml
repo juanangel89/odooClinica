@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menú raíz -->
+    <menuitem id="clinic_park_menu_root" name="Clinic Park"/>
+
+    <!-- Submenú de pacientes -->
+    <menuitem id="clinic_park_menu_patient"
+              name="Pacientes"
+              parent="clinic_park_menu_root"
+              action="action_clinic_park_patient"/>
+</odoo>

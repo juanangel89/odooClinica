@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_clinic_park_patient_form" model="ir.ui.view">
+        <field name="name">clinic.park.patient.form</field>
+        <field name="model">clinic.park.patient</field>
+        <field name="arch" type="xml">
+            <form string="Paciente">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="age"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_clinic_park_patient_tree" model="ir.ui.view">
+        <field name="name">clinic.park.patient.tree</field>
+        <field name="model">clinic.park.patient</field>
+        <field name="arch" type="xml">
+            <tree string="Pacientes">
+                <field name="name"/>
+                <field name="age"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_clinic_park_patient" model="ir.actions.act_window">
+        <field name="name">Pacientes</field>
+        <field name="res_model">clinic.park.patient</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+</odoo>

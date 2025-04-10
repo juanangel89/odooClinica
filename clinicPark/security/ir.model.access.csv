@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_clinicPark_patient,access.clinicPark.patient,model_clinicPark_patient,,1,1,1,1
+clinicPark.access_clinicPark_patient,access.clinicPark.patient,clinicPark.model_clinicPark_patient,,1,1,1,1

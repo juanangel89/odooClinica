@@ -18,3 +18,12 @@ class ClinicParkPatient(models.Model):
     companion = fields.Char(string='Acompañante')
     companion_phone = fields.Char(string='Telefono Acompañante')
     
+        # Etapa del proceso clínico
+    stage = fields.Selection([
+        ('triage', 'Triage'),
+        ('consulta', 'Consulta'),
+        ('preparacion', 'Preparación Quirúrgica'),
+        ('cirugia', 'Cirugía'),
+        ('recuperacion', 'Recuperación y Hospitalización'),
+        ('facturacion', 'Facturación'),
+    ], string='Etapa', default='triage', required=True)

@@ -1,4 +1,4 @@
-<odoo>
+<!-- <odoo>
     <menuitem id="menu_clinica_root" name="Clínica" sequence="1"/>
     <menuitem id="menu_clinica_paciente" name="Pacientes" parent="menu_clinica_root" sequence="1"/>
 
@@ -6,4 +6,13 @@
               name="Gestión de Pacientes"
               parent="menu_clinica_paciente"
               action="clinica_paciente_action"/>
+</odoo> -->
+
+<?xml version="1.0"?> 
+<odoo>
+    <menuitem id="clinicPark_menu_root" name="Real Estate">
+        <menuitem id="clinicPark_first_level_menu" name="Advertisements" >
+            <menuitem id="clinicPark_model_menu_action" action="clinicPark_action" />
+        </menuitem>
+    </menuitem>       
 </odoo>

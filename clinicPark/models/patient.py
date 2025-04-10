@@ -1,6 +1,6 @@
 from odoo import models, fields
 
-class Patient(models.Model):
+class ClinicaPaciente(models.Model):
     _name = 'clinic.patient'
     _description = 'Patient'
 

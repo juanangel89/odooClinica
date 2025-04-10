@@ -104,8 +104,4 @@
         <field name="res_model">clinic.park.patient</field>
         <field name="view_mode">kanban,tree,form</field>
     </record>
-
-    <!-- Menú -->
-    <menuitem id="clinic_menu_root" name="Clínica"/>
-    <menuitem id="clinic_menu_patient" name="Pacientes" parent="clinic_menu_root" action="action_clinic_patient"/>
 </odoo>

@@ -1,0 +1,9 @@
+<odoo>
+    <menuitem id="menu_clinica_root" name="Clínica" sequence="1"/>
+    <menuitem id="menu_clinica_paciente" name="Pacientes" parent="menu_clinica_root" sequence="1"/>
+
+    <menuitem id="menu_clinica_paciente_items"
+              name="Gestión de Pacientes"
+              parent="menu_clinica_paciente"
+              action="clinica_paciente_action"/>
+</odoo>

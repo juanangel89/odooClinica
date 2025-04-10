@@ -1,18 +1,14 @@
 from odoo import models, fields
 
-class ClinicaPaciente(models.Model):
-    _name = 'clinica.paciente'
-    _description = 'Paciente'
+class Patient(models.Model):
+    _name = 'clinic.patient'
+    _description = 'Patient'
 
-    name = fields.Char(string='Nombre completo', required=True)
-    dni = fields.Char(string='DNI')
-    fecha_nacimiento = fields.Date(string='Fecha de nacimiento')
-    genero = fields.Selection([
-        ('masculino', 'Masculino'),
-        ('femenino', 'Femenino'),
-        ('otro', 'Otro')
-    ])
-    telefono = fields.Char()
-    direccion = fields.Char()
-    acompanante = fields.Char(string='Acompañante')
-    motivo_ingreso = fields.Text()
+    name = fields.Char(string="Nombre completo", required=True)
+    age = fields.Integer(string="Edad")
+    gender = fields.Selection([
+        ('male', 'Masculino'),
+        ('female', 'Femenino'),
+        ('other', 'Otro'),
+    ], string="Género")
+    motivo_ingreso = fields.Text(string="Motivo de ingreso")

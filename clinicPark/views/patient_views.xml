@@ -1,41 +1,37 @@
 <odoo>
-    <record id="clinica_paciente_form_view" model="ir.ui.view">
-        <field name="name">clinica.paciente.form</field>
-        <field name="model">clinica.paciente</field>
+    <record id="view_patient_form" model="ir.ui.view">
+        <field name="name">clinic.patient.form</field>
+        <field name="model">clinic.patient</field>
         <field name="arch" type="xml">
             <form string="Paciente">
-                <sheet>
-                    <group>
-                        <field name="name"/>
-                        <field name="dni"/>
-                        <field name="fecha_nacimiento"/>
-                        <field name="genero"/>
-                        <field name="telefono"/>
-                        <field name="direccion"/>
-                        <field name="acompanante"/>
-                        <field name="motivo_ingreso"/>
-                    </group>
-                </sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="age"/>
+                    <field name="gender"/>
+                    <field name="motivo_ingreso"/>
+                </group>
             </form>
         </field>
     </record>
 
-    <record id="clinica_paciente_tree_view" model="ir.ui.view">
-        <field name="name">clinica.paciente.tree</field>
-        <field name="model">clinica.paciente</field>
+    <record id="view_patient_tree" model="ir.ui.view">
+        <field name="name">clinic.patient.tree</field>
+        <field name="model">clinic.patient</field>
         <field name="arch" type="xml">
             <tree string="Pacientes">
                 <field name="name"/>
-                <field name="dni"/>
-                <field name="genero"/>
-                <field name="telefono"/>
+                <field name="age"/>
+                <field name="gender"/>
             </tree>
         </field>
     </record>
 
-    <record id="clinica_paciente_action" model="ir.actions.act_window">
+    <record id="action_clinic_patient" model="ir.actions.act_window">
         <field name="name">Pacientes</field>
-        <field name="res_model">clinica.paciente</field>
+        <field name="res_model">clinic.patient</field>
         <field name="view_mode">tree,form</field>
     </record>
+
+    <menuitem id="clinic_menu_root" name="Clínica"/>
+    <menuitem id="clinic_menu_patient" name="Pacientes" parent="clinic_menu_root" action="action_clinic_patient"/>
 </odoo>

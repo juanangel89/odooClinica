@@ -8,4 +8,16 @@
               name="Pacientes"
               parent="clinic_park_menu_root"
               action="action_clinic_park_patient"/>
+
+    <!-- Submenú de cirugías -->
+    <menuitem id="clinic_park_menu_surgery"
+              name="Cirugías"
+              parent="clinic_park_menu_root"
+              action="action_clinic_park_surgery"/>
+
+    <!-- Submenú de recuperación y hospitalización -->
+    <menuitem id="clinic_park_menu_recovery"
+              name="Recuperación"
+              parent="clinic_park_menu_root"
+              action="action_clinic_park_recovery"/>
 </odoo>

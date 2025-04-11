@@ -5,3 +5,14 @@
 .o_form_view .o_form_sheet_bg {
     background-color: #1A7493 !important;
 }
+
+.o_kanban_view {
+    background-color: #1A7493 !important;
+}
+
+.o_kanban_view .o_kanban_record {
+    background-color: white !important;  /* Para que las tarjetas sean legibles */
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+}

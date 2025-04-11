@@ -9,7 +9,7 @@ class ClinicParkPreparation(models.Model):
     consultation_id = fields.Many2one('clinic.park.consultations', string='Consulta')
 
     preoperative_form = fields.Text(string='Formulario Preoperatorio')
-    supplies = fields.Text(string='Insumos Utilizados', required=True)
+    supplies = fields.Text(string='Insumos Utilizados')
     nurse_signature = fields.Binary(string='Firma de enfermeria')
     checklist_consent = fields.Boolean(string='Consentimiento informado firmado')
     checklist_exams = fields.Boolean(string='Exámenes preoperatorios revisados')

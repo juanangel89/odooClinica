@@ -11,8 +11,12 @@
 }
 
 .o_kanban_view .o_kanban_record {
-    background-color: white !important;  /* Para que las tarjetas sean legibles */
+    background-color: rgb(204, 77, 77) !important;  /* Para que las tarjetas sean legibles */
     border-radius: 8px;
     padding: 10px;
     margin-bottom: 10px;
+}
+
+.o_kanban_view.o_view_controller {
+    background-color: #1A7493 !important;
 }

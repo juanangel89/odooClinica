@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields,api
 
 class ClinicParkCirugia(models.Model):
     _name = 'clinic.park.surgery'
@@ -31,4 +31,10 @@ class ClinicParkCirugia(models.Model):
             'default_anesthesia_type': self.anesthesia_type,
             'default_procedure_detail': self.procedure_details,
             }
-        }    
+        }
+    
+    @api.onchange('triage_id')
+    def _onchange_triage_id(self):
+        if self.triage_id and self.triage_id.atencion == 'cirugia':
+            self.patient_id = self.triage_id.patient_id
+        

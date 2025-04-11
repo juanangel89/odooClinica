@@ -29,34 +29,64 @@ class ClinicParkTriage(models.Model):
     @api.model
     def create(self, vals):
         record = super().create(vals)
-        if vals.get('atencion') == 'consulta':
-            record._crear_consulta_si_aplica()
+        record._crear_registro_según_clasificacion()
         return record
 
     def write(self, vals):
-        anterior_clasificacion = self.mapped('atencion')
+        anteriores = self.mapped('atencion')
         res = super().write(vals)
 
-        for record, anterior in zip(self, anterior_clasificacion):
+        for record, anterior in zip(self, anteriores):
             nueva = vals.get('atencion', record.atencion)
-
-            # Si cambió de 'consulta' a otra → eliminar consulta
-            if anterior == 'consulta' and nueva != 'consulta':
-                consulta = self.env['clinic.park.consultations'].search([('triage_id', '=', record.id)])
-                consulta.unlink()
-
-            # Si cambió a 'consulta' → crear consulta
-            if anterior != 'consulta' and nueva == 'consulta':
-                record._crear_consulta_si_aplica()
-
+            if nueva != anterior:
+                record._eliminar_registro_anterior(anterior)
+                record._crear_registro_según_clasificacion()
         return res
 
-    def _crear_consulta_si_aplica(self):
+    def _crear_registro_según_clasificacion(self):
         self.ensure_one()
-        Consulta = self.env['clinic.park.consultations']
-        ya_existe = Consulta.search([('triage_id', '=', self.id)], limit=1)
-        if not ya_existe:
-            Consulta.create({
+        clasificacion = self.atencion
+
+        mapping = {
+            'consulta': ('clinic.park.consultations', {
                 'triage_id': self.id,
                 'patient_id': self.patient_id.id,
-            })
+            }),
+            'preparacion': ('clinic.park.preparation', {
+                'triage_id': self.id,
+                'patient_id': self.patient_id.id,
+            }),
+            'cirugia': ('clinic.park.surgery', {
+                'triage_id': self.id,
+                'patient_id': self.patient_id.id,
+            }),
+            'recuperacion': ('clinic.park.recovery', {
+                'triage_id': self.id,
+                'patient_id': self.patient_id.id,
+            }),
+            'facturacion': ('clinic.park.bill', {
+                'triage_id': self.id,
+                'patient_id': self.patient_id.id,
+            }),
+        }
+
+        if clasificacion in mapping:
+            model_name, valores = mapping[clasificacion]
+            ya_existe = self.env[model_name].search([('triage_id', '=', self.id)], limit=1)
+            if not ya_existe:
+                self.env[model_name].create(valores)
+
+    def _eliminar_registro_anterior(self, clasificacion_anterior):
+        self.ensure_one()
+        mapping = {
+            'consulta': 'clinic.park.consultations',
+            'preparacion': 'clinic.park.preparation',
+            'cirugia': 'clinic.park.surgery',
+            'recuperacion': 'clinic.park.recovery',
+            'facturacion': 'clinic.park.bill',
+        }
+
+        if clasificacion_anterior in mapping:
+            model_name = mapping[clasificacion_anterior]
+            registros = self.env[model_name].search([('triage_id', '=', self.id)])
+            registros.unlink()

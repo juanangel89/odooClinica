@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields,api
 
 class ClinicParkPreparation(models.Model):
     _name = 'clinic.park.preparation'
@@ -31,3 +31,8 @@ class ClinicParkPreparation(models.Model):
                 'default_patient_id': self.patient_id.id,
             }
         }
+
+    @api.onchange('triage_id')
+    def _onchange_triage_id(self):
+        if self.triage_id and self.triage_id.atencion == 'preparacion':
+            self.patient_id = self.triage_id.patient_id

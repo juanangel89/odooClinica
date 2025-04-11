@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api    
 
 class ClinicParkBill(models.Model):
     _name = 'clinic.park.bill'
@@ -74,3 +74,9 @@ class ClinicParkBill(models.Model):
     def action_mark_billed(self):
         for record in self:
             record.state = 'billed'
+
+    @api.onchange('triage_id')
+    def _onchange_triage_id(self):
+        if self.triage_id and self.triage_id.atencion == 'facturacion':
+            self.patient_id = self.triage_id.patient_id
+

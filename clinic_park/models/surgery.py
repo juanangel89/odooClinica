@@ -5,7 +5,7 @@ class ClinicParkCirugia(models.Model):
     _description = 'Cirugía'
 
     triage_id = fields.Many2one('clinic.park.triage', string='Triage', ondelete='cascade')
-    patient_id = fields.Many2one('clinic.park.patient', string='Paciente', required=True)
+    patient_id = fields.Many2one('clinic.park.patient', string='Paciente', required=True, ondelete='cascade')
     name= fields.Char(string='Nombre', related='patient_id.name', store=True)
     dni = fields.Char(string='Cedula', related='patient_id.dni', store=True)
     

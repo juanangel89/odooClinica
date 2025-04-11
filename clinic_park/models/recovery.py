@@ -4,7 +4,8 @@ class ClinicParkRecovery(models.Model):
     _name = 'clinic.park.recovery'
     _description = 'Recuperación y Hospitalización'
 
-    patient_id = fields.Many2one('clinic.park.patient', string='Paciente', required=True)
+
+    patient_id = fields.Many2one('clinic.park.patient', string='Paciente', required=True, ondelete='cascade')
     shift_notes = fields.Text(string='Notas por Turno')
     nurse_evolution = fields.Text(string='Evolución de Enfermería')
     alerts = fields.Text(string='Alertas Postoperatorias')

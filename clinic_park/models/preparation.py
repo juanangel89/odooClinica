@@ -4,8 +4,8 @@ class ClinicParkPreparation(models.Model):
     _name = 'clinic.park.preparation'
     _description = 'Preparación Quirúrgica'
 
-    patient_id = fields.Many2one('clinic.park.patient', string='Paciente', required=True)
-    triage_id = fields.Many2one('clinic.park.triage', string='Triage')
+    patient_id = fields.Many2one('clinic.park.patient', string='Paciente', required=True, ondelete='cascade')
+    triage_id = fields.Many2one('clinic.park.triage', string='Triage', ondelete='cascade')
     consultation_id = fields.Many2one('clinic.park.consultations', string='Consulta')
 
     preoperative_form = fields.Text(string='Formulario Preoperatorio', required=True)

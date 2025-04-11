@@ -17,7 +17,7 @@ class ClinicParkPreparation(models.Model):
     checklist_allergies = fields.Boolean(string='Alergias conocidas verificadas')
     checklist_documents = fields.Boolean(string='Documentación completa')
 
-    preparation_date = fields.Datetime(string='Fecha de Preparación', required=True)
+    preparation_date = fields.Datetime(string='Fecha de Preparación')
     patient_signature = fields.Binary(string='Firma del Paciente')
 
     def action_ir_a_cirugia(self):

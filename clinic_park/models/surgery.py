@@ -17,7 +17,7 @@ class ClinicParkCirugia(models.Model):
     anesthesia_type = fields.Selection([
         ('general', 'General'),
         ('local', 'Local'),
-    ], string='Tipo de Anestesia', required=True)
+    ], string='Tipo de Anestesia')
 
     def action_ir_a_recuperacion(self):
         return {

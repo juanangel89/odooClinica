@@ -8,7 +8,7 @@ class ClinicParkPreparation(models.Model):
     triage_id = fields.Many2one('clinic.park.triage', string='Triage', ondelete='cascade')
     consultation_id = fields.Many2one('clinic.park.consultations', string='Consulta')
 
-    preoperative_form = fields.Text(string='Formulario Preoperatorio', required=True)
+    preoperative_form = fields.Text(string='Formulario Preoperatorio', required=True, ondelete='cascade')
     supplies = fields.Text(string='Insumos Utilizados', required=True)
     nurse_signature = fields.Binary(string='Firma de enfermeria')
     checklist_consent = fields.Boolean(string='Consentimiento informado firmado')

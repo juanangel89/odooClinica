@@ -20,6 +20,7 @@
         'assets': {
         'web.assets_backend': [
             'clinic_park/static/src/css/clinic_park_menu.css',
+             'clinic_park/static/src/css/patient_view_bg.css',
         ],
     },
     'application': True,

@@ -1,35 +1,23 @@
 from odoo import models, fields, api
-from datetime import datetime
 
 class ClinicParkBill(models.Model):
     _name = 'clinic.park.bill'
     _description = 'Alta y Facturación'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char(string='Referencia', compute='_compute_name', store=True, tracking=True)
-
-    patient_id = fields.Many2one('clinic.park.patient', string='Paciente', required=True, tracking=True)
+    patient_id = fields.Many2one('clinic.park.patient', string='Paciente', required=True)
     recovery_id = fields.Many2one('clinic.park.recovery', string='Recuperación')
     surgery_id = fields.Many2one('clinic.park.surgery', string='Cirugía')
     discharge_date = fields.Datetime(string='Fecha de Egreso', default=fields.Datetime.now, required=True)
 
     consolidated_items = fields.Text(string='Insumos y Procedimientos Consolidados', readonly=True)
     digital_signature = fields.Binary(string='Firma Digital del Paciente')
-
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('done', 'Egresado'),
         ('invoiced', 'Facturado')
-    ], string='Estado', default='draft', tracking=True)
+    ], string='Estado', default='draft')
 
-    invoice_id = fields.Many2one('account.move', string='Factura', readonly=True)
-
-    @api.depends('patient_id', 'discharge_date')
-    def _compute_name(self):
-        for record in self:
-            paciente = record.patient_id.name or "Sin Nombre"
-            fecha = record.discharge_date.strftime('%Y-%m-%d %H:%M') if record.discharge_date else "Sin Fecha"
-            record.name = f"Alta de {paciente} - {fecha}"
+    invoice_id = fields.Many2one('account.move', string='Factura')
 
     def action_consolidar(self):
         """
@@ -52,18 +40,15 @@ class ClinicParkBill(models.Model):
         """
         Genera un borrador de factura vinculado al módulo de contabilidad
         """
-        if not self.patient_id.partner_id:
-            raise models.ValidationError("El paciente no tiene un contacto (partner) asignado.")
-
         invoice = self.env['account.move'].create({
             'move_type': 'out_invoice',
-            'partner_id': self.patient_id.partner_id.id,
+            'partner_id': self.patient_id.partner_id.id,  # Asumiendo que el paciente está vinculado a un res.partner
             'invoice_date': fields.Date.today(),
             'invoice_line_ids': [
                 (0, 0, {
                     'name': f'Procedimientos e Insumos - {self.patient_id.name}',
                     'quantity': 1,
-                    'price_unit': 500000.0,  # Reemplazar con lógica real de cálculo
+                    'price_unit': 500000.0,  # Puedes calcular dinámicamente el valor
                 })
             ],
         })
@@ -80,10 +65,12 @@ class ClinicParkBill(models.Model):
     def action_confirmar_alta(self):
         self.state = 'done'
 
+    # Botón: Enviar a recuperación
     def action_send_to_recovery(self):
         for record in self:
-            record.state = 'draft'  # Ajustar si hay otro estado de "recuperación"
+            record.state = 'recovery'
 
+    # Botón: Marcar como facturado
     def action_mark_billed(self):
         for record in self:
-            record.state =
+            record.state = 'billed'

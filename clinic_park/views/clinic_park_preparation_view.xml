@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="clinic_park_preparation_form_view" model="ir.ui.view">
+        <field name="name">clinic.park.preparation.form</field>
+        <field name="model">clinic.park.preparation</field>
+        <field name="arch" type="xml">
+            <form string="Preparación Quirúrgica">
+                <header> 
+                    <!-- botón para ir a la cirugía -->
+                    <button name="action_ir_a_cirugia" string="Ir a Cirugía" type="object" class="btn-primary" icon="fa-heartbeat"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="patient_id"/>
+                        <field name="preoperative_form"/>
+                        <field name="nurse_signature" widget="signature"/>
+                        <field name="patient_signature" widget="signature"/>
+                        <field name="supplies" string="Suministros Quirúrgicos"/>
+                        <field name ="preparation_date" string="Fecha de Preparación Quirúrgica"/>
+                    </group>
+                    <group string="Lista de Chequeo Preoperatoria">
+                        <field name="checklist_consent"/>
+                        <field name="checklist_exams"/>
+                        <field name="checklist_equipment"/>
+                        <field name="checklist_allergies"/>
+                        <field name="checklist_documents"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="clinic_park_preparation_tree_view" model="ir.ui.view">
+        <field name="name">clinic.park.preparation.tree</field>
+        <field name="model">clinic.park.preparation</field>
+        <field name="arch" type="xml">
+            <tree string="Preparaciones Quirúrgicas">
+                <field name="patient_id"/>
+                <field name="preparation_date"/>
+            </tree>
+        </field>
+    </record>  
+</odoo>

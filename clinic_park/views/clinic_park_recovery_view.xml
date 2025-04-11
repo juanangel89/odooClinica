@@ -29,10 +29,4 @@
             </form>
         </field>
     </record>
-
-    <record id="action_clinic_park_recovery" model="ir.actions.act_window">
-        <field name="name">Recuperaciones</field>
-        <field name="res_model">clinic.park.recovery</field>
-        <field name="view_mode">tree,form</field>
-    </record>
 </odoo>

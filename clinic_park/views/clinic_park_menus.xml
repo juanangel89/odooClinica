@@ -1,23 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Menú raíz -->
-    <menuitem id="clinic_park_menu_root" name="Clinic Park"/>
+    <menuitem id="clinic_park_menu_root" name="Clinic Park" sequence="10"/>
 
-    <!-- Submenú de pacientes -->
+    <!-- Acción para Pacientes -->
+    <record id="action_clinic_park_patient" model="ir.actions.act_window">
+        <field name="name">Pacientes</field>
+        <field name="res_model">clinic.park.patient</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>Aquí puedes gestionar los datos de los pacientes.</p>
+        </field>
+    </record>
+
+    <!-- Menú para Pacientes -->
     <menuitem id="clinic_park_menu_patient"
               name="Pacientes"
               parent="clinic_park_menu_root"
               action="action_clinic_park_patient"/>
 
-    <!-- Submenú de cirugías -->
-    <menuitem id="clinic_park_menu_surgery"
-              name="Cirugías"
+    <!-- Acción para Triage -->
+    <record id="action_clinic_park_triage" model="ir.actions.act_window">
+        <field name="name">Triage</field>
+        <field name="res_model">clinic.park.triage</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p>Aquí puedes gestionar los procesos médicos por paciente.</p>
+        </field>
+    </record>
+
+    <!-- Menú para Triage -->
+    <menuitem id="clinic_park_menu_triage"
+              name="Triage"
+              parent="clinic_park_menu_root"
+              action="action_clinic_park_triage"/>
+
+    <record id="action_clinic_park_consultations" model="ir.actions.act_window">
+        <field name="name">Consultas</field>
+        <field name="res_model">clinic.park.consultations</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="clinic_park_menu_consultations"
+          name="Consultas"
+          parent="clinic_park_menu_root"
+          action="action_clinic_park_consultations"/>
+
+    <record id="action_clinic_park_procedure" model="ir.actions.act_window">
+        <field name="name">procedimientos</field>
+        <field name="res_model">clinic.park.procedure</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="clinic_park_menu_procedure"
+          name="procedimientos"
+          parent="clinic_park_menu_root"
+          action="action_clinic_park_procedure"/>
+
+        <record id="action_clinic_park_preparation" model="ir.actions.act_window">
+        <field name="name">preparacion quirurgica</field>
+        <field name="res_model">clinic.park.preparation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="clinic_park_menu_preparation"
+          name="preparacion quirurgica"
+          parent="clinic_park_menu_root"
+          action="action_clinic_park_preparation"/>
+
+    <record id="action_clinic_park_surgery" model="ir.actions.act_window">
+        <field name="name">Cirugías</field>
+        <field name="res_model">clinic.park.surgery</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menú -->
+    <menuitem id="clinic_park_menu_surgery" name="Cirugías"
               parent="clinic_park_menu_root"
               action="action_clinic_park_surgery"/>
 
-    <!-- Submenú de recuperación y hospitalización -->
-    <menuitem id="clinic_park_menu_recovery"
-              name="Recuperación"
+        <record id="action_clinic_park_recovery" model="ir.actions.act_window">
+        <field name="name">recuperacion</field>
+        <field name="res_model">clinic.park.recovery</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menú -->
+    <menuitem id="clinic_park_menu_recovery" name="recuperacion"
               parent="clinic_park_menu_root"
               action="action_clinic_park_recovery"/>
+    
+    <record id="action_clinic_park_bill" model="ir.actions.act_window">
+        <field name="name">alta y facturacion</field>
+        <field name="res_model">clinic.park.bill</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menú -->
+    <menuitem id="clinic_park_menu_bill" name="alta y facturacion"
+              parent="clinic_park_menu_root"
+              action="action_clinic_park_bill"/>
+
 </odoo>

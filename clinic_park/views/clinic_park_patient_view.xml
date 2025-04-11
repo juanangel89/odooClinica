@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="clinic_park_patient_form_view" model="ir.ui.view">
+        <field name="name">clinic.park.patient.form</field>
+        <field name="model">clinic.park.patient</field>
+        <field name="arch" type="xml">
+            <form string="Paciente">
+                <sheet>
+                    <group>
+                        <field name="current_date"/>
+                        <field name="name"/>
+                        <field name="age"/>
+                        <field name="dni"/>
+                        <field name="phone"/>
+                        <field name="email"/>
+                        <field name="address"/>
+                        <field name="birth_date"/>
+                        <field name="reason"/>
+                    </group>
+                    <group string="Acompañante">
+                        <field name="companion"/>
+                        <field name="companion_phone"/>
+                    </group>
+                    <group>
+                        <field name="siganture" widget="siganture"/>
+                    </group>
+                    <notebook>
+                        <page string="Triajes">
+                            <field name="triage_id">
+                                <tree editable="bottom">
+                                    <field name="current_date"/>
+                                    <field name="reason"/>
+                                    <field name="temperatura"/>
+                                    <field name="pulso"/>
+                                    <field name="presion"/>
+                                    <field name="atencion"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="clinic_park_patient_tree_view" model="ir.ui.view">
+        <field name="name">clinic.park.patient.tree</field>
+        <field name="model">clinic.park.patient</field>
+        <field name="arch" type="xml">
+            <tree string="Pacientes">
+                <field name="name"/>
+                <field name="age"/>
+                <field name="dni"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="current_date"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

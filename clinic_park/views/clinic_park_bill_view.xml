@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="view_clinic_park_bill_form" model="ir.ui.view">
+        <field name="name">clinic.park.bill.form</field>
+        <field name="model">clinic.park.bill</field>
+        <field name="arch" type="xml">
+            <form string="Alta y Facturación">
+                <header>
+                        <button name="action_send_to_recovery"
+                                string="Enviar a Recuperación"
+                                type="object"
+                                class="btn-primary"/>
+                
+                        <button name="action_mark_billed"
+                                string="Marcar como Facturado"
+                                type="object"
+                                class="btn-success"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="patient_id"/>
+                        <field name="recovery_id"/>
+                        <field name="surgery_id"/>
+                        <field name="discharge_date"/>
+                        <field name="digital_signature" widget="signature"/>
+                        <field name="consolidated_items" nolabel="1" readonly="1"/>
+                        <field name="state" readonly="1"/>
+                        <field name="invoice_id" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_clinic_park_bill_tree" model="ir.ui.view">
+        <field name="name">clinic.park.bill.tree</field>
+        <field name="model">clinic.park.bill</field>
+        <field name="arch" type="xml">
+            <tree string="Altas y Facturación">
+                <field name="patient_id"/>
+                <field name="discharge_date"/>
+                <field name="state"/>
+                <field name="invoice_id"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>   
+    <record id="view_clinic_park_consultations_form" model="ir.ui.view">
+        <field name="name">clinic.park.consultations.form</field>
+        <field name="model">clinic.park.consultations</field>
+        <field name="arch" type="xml">
+            <form string="Consulta">
+                <header>
+                    <button name="action_ir_a_preparacion"
+                            string="Ir a preparación"
+                            type="object"
+                            class="btn-primary"
+                            icon="fa-heartbeat"/>
+                    <button name="action_ir_a_procedimientos"
+                            string="Ir a Procedimientos"
+                            type="object"
+                            class="btn-info"
+                            icon="fa-stethoscope"/>
+                </header>
+
+                <sheet>
+                    <group>
+                        <field name="patient_id"/>
+                        <field name="name"/>
+                        <field name="dni"/>
+                        <field name="tratamiento"/>
+                        <field name="procedimientos"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_clinic_park_consultations_tree" model="ir.ui.view">
+        <field name="name">clinic.park.consultations.tree</field>
+        <field name="model">clinic.park.consultations</field>
+        <field name="arch" type="xml">
+            <tree string="Consultas">
+                <field name="patient_id"/>
+                <field name="name"/>
+                <field name="tratamiento"/>
+                <field name="procedimientos"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

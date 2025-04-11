@@ -1,37 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>  
 <odoo>
-    <record id="view_clinic_park_surgery_tree" model="ir.ui.view">
-        <field name="name">clinic.park.surgery.tree</field>
-        <field name="model">clinic.park.surgery</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="patient_id"/>
-                <field name="surgery_date"/>
-            </tree>
-        </field>
-    </record>
-
+    <!-- Vista Formulario -->
     <record id="view_clinic_park_surgery_form" model="ir.ui.view">
         <field name="name">clinic.park.surgery.form</field>
         <field name="model">clinic.park.surgery</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Cirugía">
+                <header>
+                    <button name="action_ir_a_recuperacion" string="Ir a recuperacion" type="object" class="btn-primary"/>
+                </header>
                 <sheet>
                     <group>
                         <field name="patient_id"/>
+                        <field name="dni"/>
                         <field name="surgery_date"/>
+                        <field name="anesthesia_type"/>
+                    </group>
+                    <group>
                         <field name="procedure_details"/>
+                        <field name="documents"/>
                         <field name="vital_signs_notes"/>
-                        <field name="documents" filename="SurgeryDocument"/>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <record id="action_clinic_park_surgery" model="ir.actions.act_window">
-        <field name="name">Cirugías</field>
-        <field name="res_model">clinic.park.surgery</field>
-        <field name="view_mode">tree,form</field>
+    <!-- Vista Lista -->
+    <record id="view_clinic_park_surgery_tree" model="ir.ui.view">
+        <field name="name">clinic.park.surgery.tree</field>
+        <field name="model">clinic.park.surgery</field>
+        <field name="arch" type="xml">
+            <tree string="Cirugías">
+                <field name="name"/>
+                <field name="surgery_date"/>
+                <field name="anesthesia_type"/>
+            </tree>
+        </field>
     </record>
 </odoo>

@@ -4,6 +4,14 @@ class ClinicParkPatient(models.Model):
     _name = 'clinic.park.patient'
     _description = 'Paciente'
 
+    triage_id = fields.One2many('clinic.park.triage', 'patient_id', string='Triage')
+    consultations_id = fields.One2many('clinic.park.consultations', 'patient_id', string='Consulta')
+    procedure_id = fields.One2many('clinic.park.procedure', 'patient_id', string='Procedimiento')
+    surgery_id = fields.One2many('clinic.park.surgery', 'patient_id', string='Cirugía')
+    procedure_id = fields.One2many('clinic.park.procedure', 'patient_id', string='Procedimientos')
+    preparation_id = fields.One2many('clinic.park.preparation', 'patient_id', string='Preparación Quirúrgica')
+    recovery_id = fields.One2many('clinic.park.recovery', 'patient_id', string='Recuperación y Hospitalización')
+    # datos de la consulta
     # datos del paciente
     current_date = fields.Date(string='Fecha Actual', default=fields.Date.context_today, required=True)
     name = fields.Char(string='Nombre', required=True)
@@ -17,13 +25,4 @@ class ClinicParkPatient(models.Model):
     # datos acompañante
     companion = fields.Char(string='Acompañante')
     companion_phone = fields.Char(string='Telefono Acompañante')
-    
-        # Etapa del proceso clínico
-    stage = fields.Selection([
-        ('triage', 'Triage'),
-        ('consulta', 'Consulta'),
-        ('preparacion', 'Preparación Quirúrgica'),
-        ('cirugia', 'Cirugía'),
-        ('recuperacion', 'Recuperación y Hospitalización'),
-        ('facturacion', 'Facturación'),
-    ], string='Etapa', default='triage', required=True)
+    siganture = fields.Binary(string='Firma')

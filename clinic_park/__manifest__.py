@@ -17,6 +17,11 @@
 
 
     ],
+        'assets': {
+        'web.assets_backend': [
+            'clinic_park/static/src/css/clinic_park_menu.css',
+        ],
+    },
     'application': True,
     'installable': True,
 }

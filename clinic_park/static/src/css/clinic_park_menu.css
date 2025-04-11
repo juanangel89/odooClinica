@@ -1,0 +1,19 @@
+/* Cambiar fondo del menú de la izquierda */
+.o_main_navbar {
+    background-color: #6cb14f !important;
+}
+
+/* Cambiar fondo del menú del módulo específico (en el sidebar) */
+.o_menu_systray, .o_app {
+    background-color: #6cb14f !important;
+}
+
+/* Cambiar fondo de los elementos de menú lateral */
+.o_menu_apps .dropdown-menu, .o_menu_apps .dropdown-menu .dropdown-item {
+    background-color: #6cb14f !important;
+}
+
+/* Cambiar color del texto si es necesario */
+.o_main_navbar .o_menu_brand {
+    color: white !important;
+}
